@@ -19,7 +19,6 @@
 
 package pi;
 
-import org.junit.Test;
 import pi.tools.HttpTools;
 
 /**
@@ -31,7 +30,7 @@ public class WklieberExperimental {
         test.testHelloWorld();
     }
 
-    @Test
+
     public void testHelloWorld() throws Exception {
         String baseUrl;
         //baseUrl = "http://localhost:8080";
