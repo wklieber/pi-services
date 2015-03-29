@@ -35,7 +35,11 @@ public class HelloWorldTest {
 
     @Test
     public void testHelloWorld() throws Exception {
-        String rest = "http://localhost:8080/hello-world";
+        String baseUrl;
+        //baseUrl = "http://localhost:8080";
+        baseUrl = "http://192.168.1.60:8080";
+
+        String rest = baseUrl + "/hello-world";
 
         String text = HttpTools.makeHttpRequest(rest, null, HttpTools.FORMAT.JSON, HttpTools.FORMAT.JSON);
         System.out.println("-------------------------------------------");
