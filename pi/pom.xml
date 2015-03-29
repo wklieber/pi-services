@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>wklieber.pi.service</groupId>
+	<artifactId>pi-parent</artifactId>
+	<name>Pi Service parent</name>
+	<description>PI Services</description>
+	<url>http://maven.apache.org</url>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jersey.version>1.18.1</jersey.version>
+		<jetty-version>6.1.26</jetty-version>
+		<cleaner-version>1.0-SNAPSHOT</cleaner-version>
+		<jsp-version>6.1.14</jsp-version>
+		<servlet-api-version>2.4</servlet-api-version>
+		<apache.commons.version>1.5</apache.commons.version>
+		<derby-version>10.10.1.1</derby-version>
+		<dropwizard.version>0.8.0</dropwizard.version>
+		<dropwizard.redirect.version>0.2.0</dropwizard.redirect.version>
+		<opencsv.version>2.3</opencsv.version>
+		<log4j.version>1.2.14</log4j.version>
+		<junit.version>4.11</junit.version>
+	</properties>
+
+	<scm>
+		<developerConnection>scm:svn:https://svn.</developerConnection>
+		<connection>scm:svn:https://svn.</connection>
+		<url>https://svn.</url>
+	</scm>
+	
+	<modules>
+		<module>modules/services</module>		
+  </modules>
+
+	<dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+				<version>1.0-beta-2</version>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>1.0-beta-6</version>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+				<version>1.0-beta-2</version>
+			</extension>
+		</extensions>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.8</version>
+            </plugin>			
+		</plugins>
+	</build>
+
+    <repositories>
+        <repository>
+            <id>kc_external</id>
+            <name>Know-Center external Maven Repository</name>
+            <layout>default</layout>
+            <url>https://nexus.know-center.tugraz.at/content/groups/public</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>kc_external</id>
+			<name>KC Repository</name>
+			<url>dav:https://nexus.know-center.tugraz.at/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>kc_external</id>
+			<name>KC Repository</name>
+			<url>dav:https://nexus.know-center.tugraz.at/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>
