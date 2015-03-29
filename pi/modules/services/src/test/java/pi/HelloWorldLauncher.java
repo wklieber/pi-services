@@ -19,27 +19,18 @@
 
 package pi;
 
-import org.junit.Test;
-import pi.tools.HttpTools;
-
-import java.io.IOException;
-
 /**
  * Created by wklieber on 01.03.2015.
  */
-public class HelloWorldTest {
+public class HelloWorldLauncher {
     public static void main(String[] args) throws Exception {
-        HelloWorldTest test = new HelloWorldTest();
-        test.testHelloWorld();
+        HelloWorldLauncher tool = new HelloWorldLauncher();
+        tool.execute();
     }
 
-    @Test
-    public void testHelloWorld() throws Exception {
-        String rest = "http://localhost:8080/hello-world";
-
-        String text = HttpTools.makeHttpRequest(rest, null, HttpTools.FORMAT.JSON, HttpTools.FORMAT.JSON);
-        System.out.println("-------------------------------------------");
-        System.out.println(text);
-        System.out.println("-------------------------------------------");
+    public void execute() throws Exception {
+        String[] args;
+        args = new String[]{"server", "default-configuration.yml"};
+        HelloWorldApplication.main(args);
     }
 }

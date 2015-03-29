@@ -17,29 +17,15 @@
  * MA 02110-1301  USA
  */
 
-package pi;
-
-import org.junit.Test;
-import pi.tools.HttpTools;
-
-import java.io.IOException;
+package pi.tools;
 
 /**
- * Created by wklieber on 01.03.2015.
+ * Created by wklieber on 29.03.2015.
  */
-public class HelloWorldTest {
-    public static void main(String[] args) throws Exception {
-        HelloWorldTest test = new HelloWorldTest();
-        test.testHelloWorld();
-    }
-
-    @Test
-    public void testHelloWorld() throws Exception {
-        String rest = "http://localhost:8080/hello-world";
-
-        String text = HttpTools.makeHttpRequest(rest, null, HttpTools.FORMAT.JSON, HttpTools.FORMAT.JSON);
-        System.out.println("-------------------------------------------");
-        System.out.println(text);
-        System.out.println("-------------------------------------------");
-    }
+public abstract class TimeConstants {
+    public static final long oneSecond = 1000L;
+    public static final long oneMinute = 60000L;
+    public static final long oneHour = 3600000L;
+    public static final long oneDay = 86400000L;
+    public static final long toMillis = 1000000L;
 }

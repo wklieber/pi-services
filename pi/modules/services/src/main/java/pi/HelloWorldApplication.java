@@ -30,10 +30,6 @@ import io.dropwizard.setup.Environment;
 
 public class HelloWorldApplication extends Application<HelloWorldConfiguration> {
     public static void main(String[] args) throws Exception {
-        if(args == null) args = new String[0];
-        if(args.length <1) {
-            args = new String[]{"server", "default-configuration.yml"};
-        }
         new HelloWorldApplication().run(args);
     }
 
@@ -54,6 +50,9 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
                 configuration.getTemplate(),
                 configuration.getDefaultName()
         );
+        final TemplateHealthCheck healthCheck =
+                new TemplateHealthCheck(configuration.getTemplate());
+        environment.healthChecks().register("template", healthCheck);
         environment.jersey().register(resource);
     }
 
