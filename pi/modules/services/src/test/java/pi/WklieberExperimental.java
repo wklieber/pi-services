@@ -38,8 +38,8 @@ public class WklieberExperimental {
 
     public void testHelloWorld() throws Exception {
         String baseUrl;
-        baseUrl = "http://localhost:8080";
-        //baseUrl = "http://192.168.1.60:8080";
+        //baseUrl = "http://localhost:8080";
+        baseUrl = "http://192.168.1.60:8080";
 
         //String rest = baseUrl + "/hello-world";
         String rest = baseUrl + "/pi/image/capture";

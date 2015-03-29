@@ -82,7 +82,7 @@ public class PiCameraResource {
         //-e, --encoding  : Encoding to use for output file (jpg, bmp, gif, png)
         //-t, --timeout    : Time (in ms) before takes picture and shuts down (if not specified, set to 5s) minimum 30ms, setting to 0 waits forever
         //-q, --quality    : Set jpeg quality <0 to 100>
-        String[] args = new String[]{"-o", fileName, "-e", "png", "-t", "30"};
+        String[] args = new String[]{"-o", fileName, "-e", "png"};
         ProcessExecutor executor = new ProcessExecutor();
         ProcessExecutorSettings settings = new ProcessExecutorSettings("raspistill", args);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
