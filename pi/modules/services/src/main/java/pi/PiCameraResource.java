@@ -100,9 +100,9 @@ public class PiCameraResource {
      * delete captured file from raspberry after reading.
      */
     private void executeDeleteImageCommand(String fileName) throws InterruptedException {
-        String[] args = new String[]{"rm", "-rf", fileName};
+        String[] args = new String[]{"-rf", fileName};
         ProcessExecutor executor = new ProcessExecutor();
-        ProcessExecutorSettings settings = new ProcessExecutorSettings("raspistill", args);
+        ProcessExecutorSettings settings = new ProcessExecutorSettings("rm", args);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         settings.setOutputStream(out);
         ProcessExecutorResult result = executor.start(settings);
