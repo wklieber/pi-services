@@ -22,14 +22,26 @@ package pi;
 import org.junit.Test;
 import pi.tools.HttpTools;
 
-import java.io.IOException;
-
 /**
  * Created by wklieber on 01.03.2015.
  */
-public class HelloWorldTest {
+public class WklieberExperimental {
+    public static void main(String[] args) throws Exception {
+        WklieberExperimental test = new WklieberExperimental();
+        test.testHelloWorld();
+    }
+
     @Test
     public void testHelloWorld() throws Exception {
-        System.out.println("Hello World");
+        String baseUrl;
+        //baseUrl = "http://localhost:8080";
+        baseUrl = "http://192.168.1.60:8080";
+
+        String rest = baseUrl + "/hello-world";
+
+        String text = HttpTools.makeHttpRequest(rest, null, HttpTools.FORMAT.JSON, HttpTools.FORMAT.JSON);
+        System.out.println("-------------------------------------------");
+        System.out.println(text);
+        System.out.println("-------------------------------------------");
     }
 }
