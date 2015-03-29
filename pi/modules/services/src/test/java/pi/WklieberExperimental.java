@@ -19,7 +19,12 @@
 
 package pi;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import pi.tools.HttpTools;
+
+import java.io.File;
+import java.io.InputStream;
 
 /**
  * Created by wklieber on 01.03.2015.
@@ -33,14 +38,24 @@ public class WklieberExperimental {
 
     public void testHelloWorld() throws Exception {
         String baseUrl;
-        //baseUrl = "http://localhost:8080";
-        baseUrl = "http://192.168.1.60:8080";
+        baseUrl = "http://localhost:8080";
+        //baseUrl = "http://192.168.1.60:8080";
 
-        String rest = baseUrl + "/hello-world";
+        //String rest = baseUrl + "/hello-world";
+        String rest = baseUrl + "/pi/image/capture";
 
-        String text = HttpTools.makeHttpRequest(rest, null, HttpTools.FORMAT.JSON, HttpTools.FORMAT.JSON);
+        InputStream inputStream = HttpTools.makeHttpRequest(rest, null);
+        byte[] imageData = IOUtils.toByteArray(inputStream);
+
+        String fileName = "c:/temp/testfile.png";
+        File file = new File(fileName);
+        file.delete();
+        FileUtils.writeByteArrayToFile(file, imageData, false);
+
+
+        /*String text = HttpTools.makeHttpRequest(rest, null, HttpTools.FORMAT.JSON, HttpTools.FORMAT.JSON);
         System.out.println("-------------------------------------------");
         System.out.println(text);
-        System.out.println("-------------------------------------------");
+        System.out.println("-------------------------------------------");*/
     }
 }
